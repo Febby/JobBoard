@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: febs
+  password: 
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: JobBoard_development
+
+test:
+  <<: *default
+  database: JobBoard_test
+
+production:
+  <<: *default
+  database: <%= ENV['DATABASE_URL'] %>
